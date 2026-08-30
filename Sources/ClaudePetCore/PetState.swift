@@ -2,6 +2,7 @@ import Foundation
 
 public enum PetState: String, Codable, CaseIterable {
     case idle
+    case checking
     case running
     case waitingPermission = "waiting-permission"
     case review
@@ -9,10 +10,11 @@ public enum PetState: String, Codable, CaseIterable {
 
     public var priority: Int {
         switch self {
-        case .waitingPermission: return 4
-        case .failed: return 3
-        case .review: return 2
-        case .running: return 1
+        case .waitingPermission: return 5
+        case .failed: return 4
+        case .review: return 3
+        case .running: return 2
+        case .checking: return 1
         case .idle: return 0
         }
     }
@@ -20,6 +22,7 @@ public enum PetState: String, Codable, CaseIterable {
     public var emoji: String {
         switch self {
         case .idle: return "😴"
+        case .checking: return "🤔"
         case .running: return "🏃"
         case .waitingPermission: return "🙋"
         case .review: return "✅"
@@ -30,6 +33,7 @@ public enum PetState: String, Codable, CaseIterable {
     public var label: String {
         switch self {
         case .idle: return "Idle"
+        case .checking: return "Still going? (no update in a while)"
         case .running: return "Working"
         case .waitingPermission: return "Needs permission"
         case .review: return "Ready for review"
@@ -40,6 +44,7 @@ public enum PetState: String, Codable, CaseIterable {
     public var menuBarSymbol: String {
         switch self {
         case .idle: return "pawprint.fill"
+        case .checking: return "questionmark.circle.fill"
         case .running: return "figure.run"
         case .waitingPermission: return "hand.raised.fill"
         case .review: return "checkmark.circle.fill"

@@ -85,6 +85,7 @@ final class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         case .failed: return AppSettings.shared.notifyOnFailed
         case .review: return AppSettings.shared.notifyOnReview
         case .running: return AppSettings.shared.notifyOnRunning
+        case .checking: return AppSettings.shared.notifyOnRunning
         case .waitingPermission, .idle: return false
         }
     }
@@ -94,6 +95,7 @@ final class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         case .failed: return "Something went wrong"
         case .review: return "Done - ready for your review"
         case .running: return "Started working"
+        case .checking: return "Been quiet a while - might be stuck"
         case .waitingPermission, .idle: return state.label
         }
     }

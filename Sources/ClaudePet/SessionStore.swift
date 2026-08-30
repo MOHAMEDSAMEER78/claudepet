@@ -22,6 +22,7 @@ final class SessionStore: ObservableObject {
 
     private static let reviewDecaySeconds: TimeInterval = 20
     private static let staleSeconds: TimeInterval = 30 * 60
+    private static let runningStalledSeconds: TimeInterval = 20
 
     let stateTransitions = PassthroughSubject<(old: EffectiveSession?, new: EffectiveSession), Never>()
     let sessionEnded = PassthroughSubject<EffectiveSession, Never>()
@@ -101,7 +102,10 @@ final class SessionStore: ObservableObject {
         }
 
         let effective: [EffectiveSession] = statuses.map { s in
-            let state = SessionLogic.effectiveState(status: s, now: now, reviewDecaySeconds: Self.reviewDecaySeconds)
+            let state = SessionLogic.effectiveState(
+                status: s, now: now, reviewDecaySeconds: Self.reviewDecaySeconds,
+                runningStalledSeconds: Self.runningStalledSeconds
+            )
             return EffectiveSession(
                 sessionId: s.sessionId,
                 state: state,

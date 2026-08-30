@@ -237,6 +237,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         case .waitingPermission: return .systemOrange
         case .failed: return .systemRed
         case .review: return .systemGreen
+        case .checking: return .systemPurple
         case .running, .idle: return nil
         }
     }

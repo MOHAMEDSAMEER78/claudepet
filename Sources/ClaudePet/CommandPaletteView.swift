@@ -92,6 +92,7 @@ struct CommandPaletteView: View {
         case .failed: return .red
         case .review: return .green
         case .running: return .blue
+        case .checking: return .purple
         case .idle: return .secondary
         }
     }

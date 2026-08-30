@@ -8,7 +8,7 @@ enum SoundPlayer {
         case .waitingPermission: NSSound(named: "Ping")?.play()
         case .review: NSSound(named: "Glass")?.play()
         case .failed: NSSound(named: "Basso")?.play()
-        case .idle, .running: break
+        case .idle, .running, .checking: break
         }
     }
 }

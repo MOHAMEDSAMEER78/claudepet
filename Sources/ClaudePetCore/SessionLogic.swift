@@ -57,8 +57,13 @@ public enum SessionLogic {
         return .success(status)
     }
 
-    public static func effectiveState(status: SessionStatus, now: TimeInterval, reviewDecaySeconds: TimeInterval) -> PetState {
-        (status.state == .review && now - status.ts > reviewDecaySeconds) ? .idle : status.state
+    public static func effectiveState(
+        status: SessionStatus, now: TimeInterval, reviewDecaySeconds: TimeInterval,
+        runningStalledSeconds: TimeInterval = .infinity
+    ) -> PetState {
+        if status.state == .review && now - status.ts > reviewDecaySeconds { return .idle }
+        if status.state == .running && now - status.ts > runningStalledSeconds { return .checking }
+        return status.state
     }
 
     public static func isStale(status: SessionStatus, now: TimeInterval, staleSeconds: TimeInterval) -> Bool {

@@ -89,6 +89,10 @@ private struct StatusBadge: View {
             Image(systemName: "hand.raised.fill")
                 .font(.system(size: 10))
                 .foregroundStyle(.orange)
+        case .checking:
+            Image(systemName: "questionmark.circle.fill")
+                .font(.system(size: 12))
+                .foregroundStyle(.purple)
         case .idle:
             EmptyView()
         }

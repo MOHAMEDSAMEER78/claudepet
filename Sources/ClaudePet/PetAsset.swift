@@ -36,6 +36,7 @@ struct PetAsset {
     static func rowName(for state: PetState) -> String {
         switch state {
         case .idle: return "idle"
+        case .checking: return "idle"
         case .running: return "running"
         case .waitingPermission: return "waiting"
         case .review: return "review"

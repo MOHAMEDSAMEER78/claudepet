@@ -71,6 +71,28 @@ struct SessionLogicTests {
         #expect(result == .failed)
     }
 
+    @Test func runningBecomesCheckingAfterStalledWindow() {
+        let s = status(state: .running, ts: 1000)
+        let result = SessionLogic.effectiveState(
+            status: s, now: 1021, reviewDecaySeconds: 20, runningStalledSeconds: 20
+        )
+        #expect(result == .checking)
+    }
+
+    @Test func runningStaysRunningWithinStalledWindow() {
+        let s = status(state: .running, ts: 1000)
+        let result = SessionLogic.effectiveState(
+            status: s, now: 1010, reviewDecaySeconds: 20, runningStalledSeconds: 20
+        )
+        #expect(result == .running)
+    }
+
+    @Test func runningNeverBecomesCheckingWhenNoStalledThresholdGiven() {
+        let s = status(state: .running, ts: 1000)
+        let result = SessionLogic.effectiveState(status: s, now: 999_999, reviewDecaySeconds: 20)
+        #expect(result == .running)
+    }
+
     @Test func staleAfterThreshold() {
         let s = status(ts: 1000)
         #expect(SessionLogic.isStale(status: s, now: 1000 + 1801, staleSeconds: 1800))
