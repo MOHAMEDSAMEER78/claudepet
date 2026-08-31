@@ -3,13 +3,13 @@
     <channel>
         <title>ClaudePet</title>
         <item>
-            <title>1.2.2</title>
-            <pubDate>Sat, 22 Aug 2026 14:47:02 +0000</pubDate>
-            <sparkle:version>10</sparkle:version>
-            <sparkle:shortVersionString>1.2.2</sparkle:shortVersionString>
+            <title>1.2.3</title>
+            <pubDate>Mon, 31 Aug 2026 04:09:31 +0000</pubDate>
+            <sparkle:version>11</sparkle:version>
+            <sparkle:shortVersionString>1.2.3</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <enclosure url="https://github.com/MOHAMEDSAMEER78/claudepet/releases/download/v1.2.2/ClaudePet-1.2.2.zip" length="1856434" type="application/octet-stream" sparkle:edSignature="tckqTCFtbAJAStab80Ojf7qlCkIgnaosstj4nhC6o5GRANWDefzLiRuNgwfKB6AXAJGfLYlmtRapq2+UG706BQ=="/>
+            <enclosure url="https://github.com/MOHAMEDSAMEER78/claudepet/releases/download/v1.2.3/ClaudePet-1.2.3.zip" length="1858141" type="application/octet-stream" sparkle:edSignature="TU634dA8Wn8LkG19DrRZLQXkNLxQoffBdzbNyAGalLK81aVv4J7y6yhkpQ6eLF3u0C6k8xAV4fxYo19iF/fsCA=="/>
         </item>
     </channel>
 </rss>
